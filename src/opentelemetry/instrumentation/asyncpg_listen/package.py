@@ -1,1 +1,1 @@
-_instruments = ("asyncpg_listen>=0.0.6,<0.1.0",)
+_instruments = ("asyncpg_listen>=0.0.7,<0.1.0",)

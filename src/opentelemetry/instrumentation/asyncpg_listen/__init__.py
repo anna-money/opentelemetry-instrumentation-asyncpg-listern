@@ -1,5 +1,5 @@
 import timeit
-from typing import Collection, Tuple
+from typing import Collection
 
 import asyncpg_listen
 import wrapt
@@ -11,7 +11,7 @@ from opentelemetry.trace import SpanKind, Tracer, get_tracer
 from .package import _instruments
 from .version import __version__
 
-__all__: Tuple[str, ...] = ("AsyncpgListenInstrumentor",)
+__all__: tuple[str, ...] = ("AsyncpgListenInstrumentor",)
 
 
 class AsyncpgListenInstrumentor(BaseInstrumentor):
