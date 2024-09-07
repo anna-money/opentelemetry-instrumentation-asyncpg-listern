@@ -58,11 +58,10 @@ class AsyncpgListenInstrumentor(BaseInstrumentor):
 
             start_time = timeit.default_timer()
 
-            match notification:
-                case asyncpg_listen.Notification(channel=channel):
-                    span_name = f"Notification #{channel}"
-                case asyncpg_listen.Timeout(channel=channel):
-                    span_name = f"Notification timeout #{channel}"
+            if isinstance(notification, asyncpg_listen.Timeout):
+                span_name = f"Notification timeout #{notification.channel}"
+            else:
+                span_name = f"Notification #{notification.channel}"
 
             with tracer.start_as_current_span(
                 name=span_name,
